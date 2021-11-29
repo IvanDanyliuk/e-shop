@@ -1,4 +1,4 @@
-import { ServerStyleSheets } from '@mui/styles';
+import { ServerStyleSheets } from '@mui/material/styles';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
 
@@ -6,7 +6,12 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <Head></Head>
+                <Head>
+                    <link 
+                        rel='stylesheet' 
+                        href='https:/fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap' 
+                    />
+                </Head>
                 <body>
                     <Main />
                     <NextScript />
@@ -16,10 +21,10 @@ export default class MyDocument extends Document {
     };
 };
 
-MyDocument.getInitialProps = async (context) => {
+MyDocument.getInitialProps = async (ctx) => {
     const sheets = new ServerStyleSheets();
-    const originalRenderPage = context.renderPage;
-    context.renderPage = () => {
+    const originalRenderPage = ctx.renderPage;
+    ctx.renderPage = () => {
         originalRenderPage({
             enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
         });
