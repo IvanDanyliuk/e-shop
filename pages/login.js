@@ -28,7 +28,6 @@ export default function Login() {
         try {
             const { data } = await axios.post('/api/users/login', { email, password });
             dispatch({ type: 'USER_LOGIN', payload: data });
-            Cookies.set('userInfo', data);
             router.push(redirect || '/');
             alert('Success login');
         } catch (error) {

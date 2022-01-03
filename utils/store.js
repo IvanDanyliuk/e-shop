@@ -40,8 +40,11 @@ function reducer(state, action) {
             }
         }
         case 'USER_LOGIN':
+            Cookies.set('userInfo', JSON.stringify(action.payload));
             return { ...state, userInfo: action.payload };
         case 'USER_LOGOUT':
+            Cookies.remove('userInfo');
+            Cookies.remove('cartItems');
             return { ...state, userInfo: null, cart: { cartItems: [] } };
         default: 
             return state;
