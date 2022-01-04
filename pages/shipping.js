@@ -1,19 +1,16 @@
 import React, { useContext, useEffect } from 'react';
-import { Button, Link, List, ListItem, TextField, Typography } from '@mui/material';
-import NextLink from 'next/link';
+import { Button, List, ListItem, TextField, Typography } from '@mui/material';
 import Layout from '../components/Layout';
 import useStyles from '../utils/styles';
 import { Store } from '../utils/store';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import { Controller, useForm } from 'react-hook-form';
-import { useSnackbar } from 'notistack';
-import CheckoutWizard from '../components/checkoutWizard';
+import CheckoutWizard from '../components/CheckoutWizard';
 
 export default function Shipping() {
     const { handleSubmit, control, formState: { errors }, setValue } = useForm();
     const router = useRouter();
-    const { redirect } = router.query;
     const { state, dispatch } = useContext(Store);
     const { userInfo, cart: { shippingAddress } } = state;
     
